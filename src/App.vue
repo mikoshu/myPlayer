@@ -98,6 +98,7 @@ $color-r:#c62f2f;
   display:block;
   margin-left:40px;
   padding-top:15px;
+  position:relative;
   -webkit-app-region: no-drag;
     input{
       display:block;
@@ -110,6 +111,15 @@ $color-r:#c62f2f;
       text-indent:16px;
       color:#c77373;
       background:url(http://demo.mikoshu.me/player/icon-search.png) center right #a82828 no-repeat;
+    }
+    .hide{
+      position:absolute;
+      right:0px;
+      top:15px;
+      width:35px;
+      height:25px;
+      opacity:0;
+      cursor:pointer;
     }
   
 }
@@ -273,6 +283,7 @@ $color-r:#c62f2f;
     <h1>我的音乐播放器</h1>
     <form action="#" class="search-box" v-on:submit.prevent="search" >
       <input type="text" ref="input" placeholder="搜音乐，歌手，歌词..." >
+      <input type="submit" class="hide" >
     </form>
     <a href="javascript:;" class="reload" v-on:click="reload" >
       <img src="./images/icon-refresh.png" alt="">
@@ -477,6 +488,10 @@ import './server.js'
       },
       search: function(){ // 搜索歌曲
         this.query = this.$refs.input.value;
+        if(this.query == ''){
+          alert('请输入关键字再搜索！');
+          return
+        }
         this.tab = 'search';
       },
       change(obj){

@@ -205,6 +205,7 @@
 			}
 		},
 		mounted: function(){
+			
 			this.search();
 			if(localStorage.favorite){
 				this.favorite = JSON.parse(localStorage.favorite);

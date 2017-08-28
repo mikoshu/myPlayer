@@ -161,7 +161,7 @@
 			<div class="pop-content">
 				<p>当前文件加载目录为：</p>
 				<ul>
-					<li v-for="(index,val) in folderList" class="clearfix" >
+					<li v-for="(val,index) in folderList" class="clearfix" >
 						<span>{{val}}</span>
 						<a href="#" v-on:click="removeFolder" :data-index="index" class="fr">移除</a>
 					</li>
