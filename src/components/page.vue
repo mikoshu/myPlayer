@@ -52,22 +52,11 @@
 			<li v-if="showLoop" v-for="index in size-2" v-bind:class="[index+1 == currentPage ? 'active':'']" ><a href="javascript:;" v-on:click="toPage" >{{index+1}}</a></li>
 			<li v-if="showLoop2" v-for="index in pageNo" v-bind:class="[index+1 == currentPage ? 'active':'']" ><a href="javascript:;" v-on:click="toPage" >{{index+1}}</a></li>
 
-			<li v-if="showLoop3"><a href="javascript:;" v-on:click="toPage" >{{currentPage-3}}</a></li>
-			<li v-if="showLoop3"><a href="javascript:;" v-on:click="toPage" >{{currentPage-2}}</a></li>
-			<li v-if="showLoop3"><a href="javascript:;" v-on:click="toPage" >{{currentPage-1}}</a></li>
-			<li v-if="showLoop3" class="active"><a href="javascript:;" v-on:click="toPage" >{{currentPage}}</a></li>
-			<li v-if="showLoop3"><a href="javascript:;" v-on:click="toPage" >{{currentPage+1}}</a></li>
-			<li v-if="showLoop3"><a href="javascript:;" v-on:click="toPage" >{{currentPage+2}}</a></li>
-			<li v-if="showLoop3"><a href="javascript:;" v-on:click="toPage" >{{currentPage+3}}</a></li>
-			
-			<li v-if="showLoop4" v-bind:class="[pageNo-7 == currentPage ? 'active':'']" ><a href="javascript:;" v-on:click="toPage" >{{pageNo-7}}</a></li>
-			<li v-if="showLoop4" v-bind:class="[pageNo-6 == currentPage ? 'active':'']" ><a href="javascript:;" v-on:click="toPage" >{{pageNo-6}}</a></li>
-			<li v-if="showLoop4" v-bind:class="[pageNo-5 == currentPage ? 'active':'']" ><a href="javascript:;" v-on:click="toPage" >{{pageNo-5}}</a></li>
-			<li v-if="showLoop4" v-bind:class="[pageNo-4 == currentPage ? 'active':'']" ><a href="javascript:;" v-on:click="toPage" >{{pageNo-4}}</a></li>
-			<li v-if="showLoop4" v-bind:class="[pageNo-3 == currentPage ? 'active':'']" ><a href="javascript:;" v-on:click="toPage" >{{pageNo-3}}</a></li>
-			<li v-if="showLoop4" v-bind:class="[pageNo-2 == currentPage ? 'active':'']" ><a href="javascript:;" v-on:click="toPage" >{{pageNo-2}}</a></li>
-			<li v-if="showLoop4" v-bind:class="[pageNo-1 == currentPage ? 'active':'']" ><a href="javascript:;" v-on:click="toPage" >{{pageNo-1}}</a></li>
 
+			<li v-if="showLoop3" v-for="index in showCount" :class="[index==3?'active':'']"><a href="javascript:;" v-on:click="toPage" >{{currentPage+(index-3)}}</a></li>
+
+
+			<li v-if="showLoop4" v-for="index in showCount" :class="[pageNo-(7-index) == currentPage ? 'active':'']" ><a href="javascript:;" v-on:click="toPage" >{{pageNo-(7-index)}}</a></li>
 
 			<li v-if="showLastDots"> <a href="javascript:;">...</a> </li>
 			<li v-if="showLast" v-bind:class="[pageNo == currentPage ? 'active':'']"><a href="javascript:;" v-on:click="toPage" >{{pageNo}}</a></li>
@@ -91,6 +80,7 @@
 		},
 		data: function(){
 			return {
+				showCount: 6,
 				pageNo: 0,
 				showFirst: false,
 				showFistDots: false,
