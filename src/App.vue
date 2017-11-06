@@ -298,6 +298,9 @@ $color-r:#c62f2f;
     <div class="side-bar">
       <dl>
         <dt>推荐</dt>
+        <dd v-on:click="toDefault" v-bind:class='[tab == "myDefault" ? "active" : "" ]'>
+          <ins class="icon-music"></ins>推荐榜单
+        </dd>
         <dd v-on:click="toLocation" v-bind:class='[tab == "location" ? "active" : "" ]'>
           <ins class="icon-music"></ins>本地音乐
         </dd>
@@ -335,12 +338,13 @@ $color-r:#c62f2f;
 import location from './components/location.vue';
 import myFavorite from './components/myFavorite.vue';
 import search from './components/searchResult.vue';
+import myDefault from './components/default.vue';
 import './server.js'
   export default{
     data(){
       return {
         views: 'testttt',
-        tab: 'location',
+        tab: 'myDefault',
         musicData:{
           currentSong:'',
           currentLink: '',
@@ -486,6 +490,9 @@ import './server.js'
       toFavorite: function(){
         this.tab = 'myFavorite';
       },
+      toDefault(){
+        this.tab = 'myDefault'
+      },
       search: function(){ // 搜索歌曲
         this.query = this.$refs.input.value;
         if(this.query == ''){
@@ -509,7 +516,8 @@ import './server.js'
     components:{
       'location': location,
       'myFavorite': myFavorite,
-      'search': search
+      'search': search,
+      'myDefault': myDefault
     },
     compiled: function(){
 
